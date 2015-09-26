@@ -86,7 +86,6 @@ int main()
 			scanf("%d", &w);
 
 			a[x][y] = w;
-			a[y][x] = w;
 			g[x].push_back(make_pair(y, w));
 			g[y].push_back(make_pair(x, w));
 		}
@@ -99,7 +98,7 @@ int main()
 			
 			while(k != s) {
 				p = parent[k];
-				flow = min(flow, a[k][p]);
+				flow = min(flow, a[p][k]);
 				k = parent[k];
 
 				
@@ -111,7 +110,7 @@ int main()
 
 			while(k != s) {
 				p = parent[k];
-				a[k][p] -= flow;
+				a[k][p] += flow;
 				a[p][k] -= flow;
 				k = parent[k];
 			}
