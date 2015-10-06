@@ -12,7 +12,7 @@ int create_tree(int input[],int tree[], int n)
 
 		while(x <= n) {
 			tree[x] += input[i];
-			x += x & -x;
+			x += (x & (-x));
 		}
 	}
 }
@@ -22,7 +22,7 @@ int update(int tree[], int x, int val, int n)
 {
 	while(x <= n) {
 		tree[x] +=  val;
-		x += x & -x;
+		x += (x & (-x);
 	}
 }
 
@@ -33,7 +33,7 @@ int query(int tree[], int x)
 
 	while(x > 0) {
 		sum += tree[x];
-		x -= x & -x;
+		x -= (x & (-x));
 	}
 
 	return sum;
